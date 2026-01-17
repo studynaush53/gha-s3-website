@@ -19,3 +19,6 @@ jobs:
     #     with:
     #       github_token: ${{ secrets.GITHUB_TOKEN }}
     #       publish_dir: ./public
+      - name: Sync files to S3 bucket
+        run: |
+          aws s3 sync ./ s3://gha-stotic-wobsite --exclude "*" --include "index.html"
